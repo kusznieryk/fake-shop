@@ -1,11 +1,13 @@
 import { Flex, Box, Image, chakra } from "@chakra-ui/react";
 import React from "react";
-import { item } from '../types_constant'
-
+import { item } from "../app/types_constant";
+import { useAppDispatch } from '../app/hooks'
+import { addElement } from '../app/store/features/cart'
 interface props {
-  data: item
+  data: item;
 }
 const element: React.FC<props> = ({ data }) => {
+  const dispatch = useAppDispatch()
   return (
     <Flex
       bg="#edf3f8"
@@ -57,7 +59,7 @@ const element: React.FC<props> = ({ data }) => {
           fit="cover"
           mt={2}
           src={data.images[0]}
-          alt="NIKE AIR"
+          alt={data.title}
         />
 
         <Flex
@@ -72,6 +74,7 @@ const element: React.FC<props> = ({ data }) => {
             ${data.price}
           </chakra.h1>
           <chakra.button
+            onClick={() => { dispatch(addElement(data)) }}
             px={2}
             py={1}
             bg="white"

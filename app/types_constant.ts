@@ -4,7 +4,7 @@ interface itemOrig {
   title: string;
   price: number;
   id: number;
-  descpription: string;
+  description: string;
   images: string[];
 }
 

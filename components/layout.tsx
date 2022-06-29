@@ -50,7 +50,7 @@ const layout = () => {
       ml={5}
     >
       <Icon as={AiOutlineShoppingCart} w="4" h="4" color="red.500" mr="2" />
-    <Cart />
+      <Cart />
     </Box>
   );
   const MobileNavContent = (

@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import Item from "./item";
-import { item } from '../types_constant'
+import { item } from '../app/types_constant'
 
 interface props {
   items: item[]
