@@ -74,9 +74,7 @@ const layout = () => {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-      <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-        Dashboard
-      </Button>
+      <Cart />
       <Button
         w="full"
         variant="solid"
