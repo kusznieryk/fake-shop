@@ -1,10 +1,23 @@
-import React from 'react'
-import { Box, chakra, useDisclosure, useColorMode, useColorModeValue, Flex, IconButton, Icon, Link, HStack, Button, CloseButton, VStack } from '@chakra-ui/react'
-import { FaSun, FaMoon, FaHeart, } from 'react-icons/fa'
-import { AiFillHome, AiOutlineMenu, AiOutlineInbox, AiFillGithub, AiOutlineShoppingCart } from 'react-icons/ai'
-import { BsFillCameraVideoFill } from 'react-icons/bs'
-import { useViewportScroll } from 'framer-motion';
-import Cart from '../components/cart'
+import React from "react";
+import {
+  Box,
+  chakra,
+  useDisclosure,
+  useColorMode,
+  useColorModeValue,
+  Flex,
+  IconButton,
+  Icon,
+  Link,
+  HStack,
+  Button,
+  CloseButton,
+  VStack,
+} from "@chakra-ui/react";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineInbox, AiFillGithub } from "react-icons/ai";
+import { BsFillCameraVideoFill } from "react-icons/bs";
+import Cart from "../components/cart";
 
 const layout = () => {
   const mobileNav = useDisclosure();
@@ -13,12 +26,6 @@ const layout = () => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const bg = useColorModeValue("white", "gray.800");
   const ref = React.useRef(null);
-  const [y, setY] = React.useState(0);
-  const height = ref.current ? ref.current.getBoundingClientRect() : 0;
-  const { scrollY } = useViewportScroll();
-  React.useEffect(() => {
-    return scrollY.onChange(() => setY(scrollY.get()));
-  }, [scrollY]);
   const SponsorButton = (
     <Box
       display={{
@@ -39,7 +46,7 @@ const layout = () => {
       _hover={{
         bg: "gray.200",
         borderColor: "gray.300",
-        cursor: "pointer"
+        cursor: "pointer",
       }}
       _active={{
         borderColor: "gray.300",
@@ -49,7 +56,6 @@ const layout = () => {
       }}
       ml={5}
     >
-      <Icon as={AiOutlineShoppingCart} w="4" h="4" color="red.500" mr="2" />
       <Cart />
     </Box>
   );
@@ -75,24 +81,28 @@ const layout = () => {
         onClick={mobileNav.onClose}
       />
       <Cart />
-      <Button
-        w="full"
-        variant="solid"
-        colorScheme="brand"
-        leftIcon={<AiOutlineInbox />}
+      <Link
+        isExternal
+        aria-label="Go to Choc UI GitHub page"
+        href="https://github.com/anubra266/choc-ui"
       >
-        Inbox
-      </Button>
-      <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
-        Videos
-      </Button>
+        <Icon
+          as={AiFillGithub}
+          display="block"
+          transition="color 0.2s"
+          w="5"
+          h="5"
+          _hover={{
+            color: "gray.600",
+          }}
+        />
+      </Link>
     </VStack>
   );
   return (
     <Box pos="relative">
       <chakra.header
         ref={ref}
-        shadow={y > height ? "sm" : undefined}
         transition="box-shadow 0.2s"
         bg={bg}
         borderTopColor="brand.400"
@@ -103,8 +113,7 @@ const layout = () => {
           <Flex w="full" h="full" px="6" align="center" justify="space-between">
             <Flex align="center">
               <Link href="/">
-                <HStack>
-                </HStack>
+                <HStack></HStack>
               </Link>
             </Flex>
 
@@ -177,5 +186,4 @@ const layout = () => {
   );
 };
 
-
-export default layout
+export default layout;

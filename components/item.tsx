@@ -1,20 +1,20 @@
 import { Flex, Box, Image, chakra } from "@chakra-ui/react";
 import React from "react";
 import { item } from "../app/types_constant";
-import { useAppDispatch } from '../app/hooks'
-import { addElement } from '../app/store/features/cart'
+import { useAppDispatch } from "../app/hooks";
+import { addElement } from "../app/store/features/cart";
 interface props {
   data: item;
 }
 const element: React.FC<props> = ({ data }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   return (
     <Flex
       bg="#edf3f8"
       _dark={{
         bg: "#3e3e3e",
       }}
-      p={50}
+      p={10}
       w="full"
       alignItems="center"
       justifyContent="center"
@@ -74,11 +74,13 @@ const element: React.FC<props> = ({ data }) => {
             ${data.price}
           </chakra.h1>
           <chakra.button
-            onClick={() => { dispatch(addElement(data)) }}
+            onClick={() => {
+              dispatch(addElement(data));
+            }}
             px={2}
             py={1}
             bg="white"
-            fontSize="xs"
+            fontSize="sm"
             color="gray.900"
             fontWeight="bold"
             rounded="lg"
@@ -86,7 +88,7 @@ const element: React.FC<props> = ({ data }) => {
             _hover={{
               bg: "gray.200",
             }}
-            _focus={{
+            _focusWithin={{
               bg: "gray.400",
             }}
           >

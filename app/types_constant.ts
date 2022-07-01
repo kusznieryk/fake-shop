@@ -1,4 +1,4 @@
-export const url = "https://api.escuelajs.co/api/v1/products?offset=0&limit=12"
+export const url = "https://api.escuelajs.co/api/v1/products?"
 
 interface itemOrig {
   title: string;

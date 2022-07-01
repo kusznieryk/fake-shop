@@ -8,11 +8,16 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Heading,
+  Icon,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import CartItem from "./cartItem";
 import { clearCart } from "../app/store/features/cart";
+
+import { AiOutlineShoppingCart } from 'react-icons/ai'
+
 type place = "right" | "bottom";
 
 const cart: React.FC = () => {
@@ -21,6 +26,7 @@ const cart: React.FC = () => {
   const dispatch = useAppDispatch();
   const clearItems = () => dispatch(clearCart());
   const [placement, setPlacement] = useState<place>("bottom");
+  const bg = useColorModeValue("white", "#2d3748");
 
   useEffect(() => {
     setPlacement(window.innerWidth >= 767 ? "right" : "bottom");
@@ -28,8 +34,8 @@ const cart: React.FC = () => {
 
   return (
     <>
-      <Button colorScheme="gray" onClick={onOpen}>
-        Go To Cart
+      <Button colorScheme="gray" onClick={onOpen} leftIcon={<Icon as={AiOutlineShoppingCart} w="4" h="4" color="red.500" mr="2" />}>
+        Cart
       </Button>
       <Drawer
         placement={placement}
@@ -40,7 +46,10 @@ const cart: React.FC = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">
-            The elements are...
+            {cart.length
+              ? "The elements of your cart are: "
+              : "You don't have any items on your cart"}
+            <Button onClick={onClose}>X</Button>
           </DrawerHeader>
           <DrawerBody>
             {cart.map((e, index) => (
@@ -51,7 +60,7 @@ const cart: React.FC = () => {
               />
             ))}
             {!!cart.length && (
-              <Box position="absolute" bottom="5">
+              <Box position="absolute" bg={bg} w="100%" bottom="0" p="5">
                 <Heading>
                   The total price is: $
                   {cart.reduce((acc, curr) => curr.price + acc, 0)}

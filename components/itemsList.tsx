@@ -9,8 +9,8 @@ interface props {
 const list: React.FC<props> = ({ items }) => {
   return (
     <Box display="grid" gridTemplateColumns={"repeat(auto-fill,minmax(350px,1fr))"}>
-      {items.map((e: item) => (
-        <Item data={e} key={e.id} />
+      {items.map((e: item, index: number) => (
+        <Item data={e} key={String(index) + String(e.id)} />
       ))}
     </Box>
   );
