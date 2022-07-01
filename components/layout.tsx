@@ -10,13 +10,11 @@ import {
   Icon,
   Link,
   HStack,
-  Button,
   CloseButton,
   VStack,
 } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { AiOutlineMenu, AiOutlineInbox, AiFillGithub } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
+import { AiOutlineMenu, AiFillGithub } from "react-icons/ai";
 import Cart from "../components/cart";
 
 const layout = () => {
@@ -84,7 +82,7 @@ const layout = () => {
       <Link
         isExternal
         aria-label="Go to Choc UI GitHub page"
-        href="https://github.com/anubra266/choc-ui"
+        href="https://github.com/kusznieryk/fake-shop"
       >
         <Icon
           as={AiFillGithub}
@@ -134,7 +132,7 @@ const layout = () => {
                 <Link
                   isExternal
                   aria-label="Go to Choc UI GitHub page"
-                  href="https://github.com/anubra266/choc-ui"
+                  href="https://github.com/kusznieryk/fake-shop"
                 >
                   <Icon
                     as={AiFillGithub}

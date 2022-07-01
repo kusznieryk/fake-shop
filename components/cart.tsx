@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import CartItem from "./cartItem";
 import { clearCart } from "../app/store/features/cart";
 
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
 
 type place = "right" | "bottom";
 
@@ -34,7 +34,13 @@ const cart: React.FC = () => {
 
   return (
     <>
-      <Button colorScheme="gray" onClick={onOpen} leftIcon={<Icon as={AiOutlineShoppingCart} w="4" h="4" color="red.500" mr="2" />}>
+      <Button
+        colorScheme="gray"
+        onClick={onOpen}
+        leftIcon={
+          <Icon as={AiOutlineShoppingCart} w="6" h="6" color="red.400" mr="2" />
+        }
+      >
         Cart
       </Button>
       <Drawer
@@ -49,7 +55,9 @@ const cart: React.FC = () => {
             {cart.length
               ? "The elements of your cart are: "
               : "You don't have any items on your cart"}
-            <Button onClick={onClose}>X</Button>
+            <Button onClick={onClose} w="8" h="8" ml="40px" mr="0">
+              <Icon as={AiOutlineClose} w="6" h="6" />
+            </Button>
           </DrawerHeader>
           <DrawerBody>
             {cart.map((e, index) => (

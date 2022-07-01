@@ -4,7 +4,8 @@ export default extendTheme({
   styles: {
     global: {
       html: {
-        scrollbehavior: 'smooth'
+        scrollBehavior: 'smooth',
+        transition: 'all 1s'
       }
     }
   }
