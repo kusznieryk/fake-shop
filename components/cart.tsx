@@ -9,6 +9,7 @@ import {
   DrawerOverlay,
   Heading,
   Icon,
+  Text,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -51,11 +52,19 @@ const cart: React.FC = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">
-            {cart.length
-              ? "The elements of your cart are: "
-              : "You don't have any items on your cart"}
-            <Button onClick={onClose} w="8" h="8" ml="40px" mr="0">
+          <DrawerHeader
+            borderBottomWidth="1px"
+            p="4"
+            width="100%"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Text>
+              {cart.length
+                ? "The elements of your cart are: "
+                : "You don't have any items on your cart"}
+            </Text>
+            <Button onClick={onClose} w="8" h="8" mr="0">
               <Icon as={AiOutlineClose} w="6" h="6" />
             </Button>
           </DrawerHeader>
@@ -67,16 +76,16 @@ const cart: React.FC = () => {
                 key={String(index) + String(e.id)}
               />
             ))}
-            {!!cart.length && (
-              <Box position="absolute" bg={bg} w="100%" bottom="0" p="5">
-                <Heading>
-                  The total price is: $
-                  {cart.reduce((acc, curr) => curr.price + acc, 0)}
-                </Heading>
-                <Button onClick={clearItems}>Clear Cart</Button>
-              </Box>
-            )}
           </DrawerBody>
+          {!!cart.length && (
+            <Box bg={bg} w="100%" bottom="0" p="5">
+              <Heading>
+                The total price is: $
+                {cart.reduce((acc, curr) => curr.price + acc, 0)}
+              </Heading>
+              <Button onClick={clearItems}>Clear Cart</Button>
+            </Box>
+          )}
         </DrawerContent>
       </Drawer>
     </>

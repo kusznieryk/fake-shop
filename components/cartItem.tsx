@@ -1,8 +1,9 @@
-import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Image, Text, Icon } from "@chakra-ui/react";
 import React from "react";
 import { useAppDispatch } from "../app/hooks";
 import { removeElement } from "../app/store/features/cart";
 import { item } from "../app/types_constant";
+import { BsTrash } from "react-icons/bs";
 
 interface props {
   data: item;
@@ -21,13 +22,15 @@ const cartItem: React.FC<props> = ({ data, index }) => {
       mx="10px"
       alignItems="center"
     >
-      <Image src={data.images[0]} gridColumn="1"gridRow="1/3" width="80px" />
+      <Image src={data.images[0]} gridColumn="1" gridRow="1/3" width="80px" />
       <Heading fontSize="1.3rem" gridColumn="2" gridRow="1">
         {data.title}
       </Heading>
-      <Text gridColumn="2" fontSize="1.4rem">${data.price}</Text>
+      <Text gridColumn="2" fontSize="1.4rem">
+        ${data.price}
+      </Text>
       <Button onClick={remove} gridColumn="3/4" gridRow="1/3">
-        X
+        <Icon as={BsTrash} />
       </Button>
     </Box>
   );
